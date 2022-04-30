@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Signup from './Components/Auth/Signup';
+import Index from './Components/Auth/Index';
 
 function App() {
   return (
     <div className="App">
-      <Signup />
+      <Index />
     </div>
   );
 }

@@ -1,9 +1,10 @@
 import React from 'react';
+import GoogleSVG from '../../assets/google.svg';
 
-const Signup: React.FC = function () {
+const Signin: React.FC = function () {
   return (
-    <form action="#" className="sign-up-form">
-      <h2 className="title">Sign up</h2>
+    <form action="#" className="sign-in-form">
+      <h2 className="title">Sign in</h2>
       <div className="input-field">
         <img
           src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"
@@ -13,20 +14,13 @@ const Signup: React.FC = function () {
       </div>
       <div className="input-field">
         <img
-          src="https://img.icons8.com/material-sharp/24/000000/new-post.png"
-          alt="email"
-        />
-        <input type="email" placeholder="Email" />
-      </div>
-      <div className="input-field">
-        <img
           src="https://img.icons8.com/ios-glyphs/30/000000/lock--v1.png"
           alt="password"
         />
         <input type="password" placeholder="Password" />
       </div>
-      <input type="submit" className="btn" defaultValue="Sign up" />
-      <p className="social-text">Or Sign up with social platforms</p>
+      <input type="submit" defaultValue="Login" className="btn solid" />
+      <p className="social-text">Or Sign in with social platforms</p>
       <div className="social-media">
         <a
           href="https://www.linkedin.com/in/tanmay-vaish/"
@@ -51,4 +45,4 @@ const Signup: React.FC = function () {
   );
 };
 
-export default Signup;
+export default Signin;
