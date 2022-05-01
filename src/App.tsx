@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import Index from './Components/Auth/Index';
-import NavbarOne from './Components/Nav/NavbarOne';
+import NavbarTwo from './Components/Nav/NavbarTwo';
 
 function App() {
   return (
     <div>
-      <NavbarOne />
+      <NavbarTwo />
       <Index />
     </div>
   );

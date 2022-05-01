@@ -1,9 +1,9 @@
 import React from 'react';
-import './styles/NavbarOne.css';
+import './styles/Navbar.css';
 
 const NavbarOne: React.FC = function () {
   return (
-    <nav className="navbar">
+    <nav className="navbar-one">
       <div className="navbar-container">
         <a href="https://flowbite.com" className="flex items-center">
           <span className="navbar-title">
