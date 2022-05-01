@@ -1,5 +1,4 @@
 import React from 'react';
-import GoogleSVG from '../../assets/google.svg';
 
 const Signin: React.FC = function () {
   return (

@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 import Index from './Components/Auth/Index';
+import NavbarOne from './Components/Nav/NavbarOne';
 
 function App() {
   return (
-    <div className="App">
+    <div>
+      <NavbarOne />
       <Index />
     </div>
   );

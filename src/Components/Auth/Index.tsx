@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+
+import image1 from '../../assets/undraw_breakfast_psiw.svg';
+import image2 from '../../assets/undraw_online_groceries_a02y.svg';
+
 import Signup from './Signup';
 import Signin from './Signin';
 
@@ -9,7 +13,7 @@ const Index: React.FC = function () {
   const [isSignup, setIsSignup] = useState(false);
 
   return (
-    <div className={`container ${isSignup ? 'sign-up-mode' : ''}`}>
+    <div className={`sign-container ${isSignup ? 'sign-up-mode' : ''}`}>
       <div className="forms-container">
         <div className="signin-signup">
           <Signup />
@@ -35,11 +39,11 @@ const Index: React.FC = function () {
               Sign up
             </button>
           </div>
+          <img className="image" src={image1} alt="signup" />
         </div>
         <div className="panel right-panel">
           <div className="content">
             <h3>One of us ?</h3>
-
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
               laboriosam ad deleniti.
@@ -55,6 +59,7 @@ const Index: React.FC = function () {
               Sign in
             </button>
           </div>
+          <img className="image" src={image2} alt="signup" />
         </div>
       </div>
     </div>
