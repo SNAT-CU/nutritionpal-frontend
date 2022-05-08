@@ -1,13 +1,18 @@
 import React from 'react';
 import './App.css';
+import FoodSection from './Components/Diet/FoodSection';
+import NavbarOne from './Components/Nav/NavbarOne';
 import Index from './Components/Auth/Index';
-import NavbarTwo from './Components/Nav/NavbarTwo';
 
 function App() {
   return (
     <div>
-      <NavbarTwo />
-      <Index />
+      <NavbarOne />
+      {/* <Index /> */}
+      <FoodSection section="BREAKFAST" />
+      <FoodSection section="LUNCH" />
+      <FoodSection section="SNACKS" />
+      <FoodSection section="DINNER" />
     </div>
   );
 }
