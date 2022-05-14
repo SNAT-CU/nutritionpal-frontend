@@ -17,11 +17,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "react-hooks"
-  ],
+  "plugins": ["react", "@typescript-eslint", "react-hooks"],
   "rules": {
     "react/function-component-definition": [
       2,
@@ -34,9 +30,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".tsx"
-        ]
+        "extensions": [".tsx"]
       }
     ],
     "react/prop-types": 0,
@@ -48,7 +42,8 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
   },
   "settings": {
     "import/resolver": {

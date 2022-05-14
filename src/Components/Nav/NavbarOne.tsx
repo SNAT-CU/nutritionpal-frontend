@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ModalSearch from '../Search/ModalSearch';
 import './styles/Navbar.css';
 
 const NavbarOne: React.FC = function () {
+  const [searchModal, setSearchModal] = useState(false);
+
   return (
     <nav className="navbar-one">
       <div className="navbar-container">
@@ -11,7 +14,7 @@ const NavbarOne: React.FC = function () {
           </span>
         </a>
         <div className="navbar-part-one">
-          <div className="bar-container">
+          <div className="bar-container" onClick={() => setSearchModal(true)}>
             <div className="menu-bar">
               <svg
                 className="search-bar-icon"
@@ -31,8 +34,16 @@ const NavbarOne: React.FC = function () {
               id="email-address-icon"
               className="search-bar"
               placeholder="Search..."
+              disabled={!searchModal}
+              // onClick={() => setSearchModal(true)}
             />
           </div>
+          {searchModal && (
+            <ModalSearch
+              searchModal={searchModal}
+              setSearchModal={setSearchModal}
+            />
+          )}
           <button
             data-collapse-toggle="mobile-menu-3"
             type="button"
