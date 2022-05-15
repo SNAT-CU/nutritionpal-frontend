@@ -1,7 +1,7 @@
 import React from 'react';
 import './FoodSection.css';
 
-const FoodSection: React.FC = ({ section }) => {
+function FoodSection({ section }) {
   const mockFoodData = [
     {
       name: 'Chicken',
@@ -40,6 +40,6 @@ const FoodSection: React.FC = ({ section }) => {
       </button>
     </div>
   );
-};
+}
 
 export default FoodSection;

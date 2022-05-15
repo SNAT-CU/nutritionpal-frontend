@@ -1,0 +1,3 @@
+.foodList {
+ @apply flex items-center justify-between;
+}
