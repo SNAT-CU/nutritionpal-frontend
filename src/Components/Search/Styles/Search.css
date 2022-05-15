@@ -1,3 +1,7 @@
 .foodList {
  @apply flex items-center justify-between;
 }
+
+.modalBtn {
+ @apply sticky bottom-0;
+}

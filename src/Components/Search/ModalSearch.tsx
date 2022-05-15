@@ -10,6 +10,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Divider, Grid, IconButton, InputBase, Paper } from '@mui/material';
 import Search from './Search';
 
+import './Styles/Search.css';
+
 export default function FormDialog({ searchModal, setSearchModal }) {
   const [open, setOpen] = useState(searchModal);
 
@@ -56,7 +58,7 @@ export default function FormDialog({ searchModal, setSearchModal }) {
           palette: {
             mode: 'light',
             primary: { main: 'rgb(255,255,255)' },
-            background: { paper: 'rgb(3,86,38)' },
+            background: { paper: '#15803D' },
           },
         })}
       >
@@ -71,17 +73,22 @@ export default function FormDialog({ searchModal, setSearchModal }) {
             <Paper
               component="form"
               sx={{
-                p: '12px 12px 0px',
                 display: 'flex',
                 alignItems: 'center',
                 width: '100%',
+                position: 'sticky',
+                top: 0,
+                backgroundColor: '#15803D',
+                zIndex: 100,
+                padding: '5px',
+                boxShadow: '0',
               }}
             >
               <IconButton sx={{ p: '10px' }} aria-label="menu">
                 <SearchIcon />
               </IconButton>
               <InputBase
-                sx={{ ml: 1, flex: 1, color: 'white' }}
+                sx={{ ml: 1, flex: 1, color: 'yellow' }}
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search google maps' }}
               />
@@ -112,7 +119,7 @@ export default function FormDialog({ searchModal, setSearchModal }) {
             </Paper>
             {/* <Divider /> */}
 
-            <Paper>
+            <Paper className="modalBtn">
               <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>
                 <Button onClick={handleClose}>Subscribe</Button>
