@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import Button from '@mui/material/Button';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import SearchIcon from '@mui/icons-material/Search';
-import { Divider, Grid, IconButton, InputBase, Paper } from '@mui/material';
+import {IconButton, InputBase, Paper } from '@mui/material';
 import Search from './Search';
+import { useDispatch } from 'react-redux';
 
 import './Styles/Search.css';
+import { addFood } from '../../redux/foods';
 
-export default function FormDialog({ searchModal, setSearchModal }) {
+export default function FormDialog({ searchModal, setSearchModal, section }: any) {
   const [open, setOpen] = useState(searchModal);
 
   const [foodData, setFoodData] = useState([]);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch('https://thetanmayvaish.xyz/food', {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     })
       .then((response) => response.json())
       .then((result) => setFoodData(result))
@@ -39,7 +40,9 @@ export default function FormDialog({ searchModal, setSearchModal }) {
     setSearchModal(false);
   };
 
-  console.log();
+  const handleClickFood = (food: any) => {
+    dispatch(addFood({section, food}));
+  }
 
   return (
     <>
@@ -51,15 +54,15 @@ export default function FormDialog({ searchModal, setSearchModal }) {
           components: {
             MuiListItemButton: {
               defaultProps: {
-                disableTouchRipple: true,
-              },
-            },
+                disableTouchRipple: true
+              }
+            }
           },
           palette: {
             mode: 'light',
             primary: { main: 'rgb(255,255,255)' },
-            background: { paper: '#15803D' },
-          },
+            background: { paper: '#15803D' }
+          }
         })}
       >
         <Paper elevation={0}>
@@ -67,11 +70,11 @@ export default function FormDialog({ searchModal, setSearchModal }) {
             open={open}
             onClose={handleClose}
             sx={{
-              width: '100vw',
+              width: '100vw'
             }}
           >
             <Paper
-              component="form"
+              component='form'
               sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -81,25 +84,17 @@ export default function FormDialog({ searchModal, setSearchModal }) {
                 backgroundColor: '#15803D',
                 zIndex: 100,
                 padding: '5px',
-                boxShadow: '0',
+                boxShadow: '0'
               }}
             >
-              <IconButton sx={{ p: '10px' }} aria-label="menu">
+              <IconButton sx={{ p: '10px' }} aria-label='menu'>
                 <SearchIcon />
               </IconButton>
               <InputBase
                 sx={{ ml: 1, flex: 1, color: 'yellow' }}
-                placeholder="Search…"
+                placeholder='Search…'
                 inputProps={{ 'aria-label': 'search google maps' }}
               />
-              <IconButton
-                type="submit"
-                sx={{ p: '10px' }}
-                aria-label="search"
-                onClick={handleClose}
-              >
-                <HighlightOffIcon />
-              </IconButton>
             </Paper>
             {/* <Divider /> */}
             <Paper>
@@ -110,21 +105,15 @@ export default function FormDialog({ searchModal, setSearchModal }) {
                 {foodData.foods &&
                   foodData.foods.food.map((food, ind) => (
                     <Search
-                      key={ind}
+                      key={`${food.food_name}+${ind}`}
                       foodName={food.food_name}
                       foodDescription={food.food_description}
+                      handleClickFood={section ? ()=>handleClickFood(food) : null}
                     />
                   ))}
               </DialogContent>
             </Paper>
             {/* <Divider /> */}
-
-            <Paper className="modalBtn">
-              <DialogActions>
-                <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handleClose}>Subscribe</Button>
-              </DialogActions>
-            </Paper>
           </Dialog>
         </Paper>
       </ThemeProvider>

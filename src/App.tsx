@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
 import NavbarOne from './Components/Nav/NavbarOne';
+import NavbarTwo from './Components/Nav/NavbarTwo';
 import DayChart from './Components/Diet/DayChart';
+import Index from './Components/Auth/Index';
+import { Provider } from 'react-redux';
+import Store from './redux/store';
 
 function App() {
   return (
-    <div>
-      <NavbarOne />
-      {/* <Index /> */}
-      <DayChart />
-    </div>
+    <Provider store={Store}>
+      <div className="App">
+        <NavbarOne />
+        {/*<NavbarTwo />*/}
+        {/*<Index />*/}
+        <DayChart />
+      </div>
+    </Provider>
   );
 }
 

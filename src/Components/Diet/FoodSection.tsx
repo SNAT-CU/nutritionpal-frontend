@@ -1,42 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './FoodSection.css';
+import ModalSearch from '../Search/ModalSearch';
+import { useSelector } from 'react-redux';
 
-function FoodSection({ section }) {
-  const mockFoodData = [
-    {
-      name: 'Chicken',
-      calories: '100',
-      carbs: '20',
-      fat: '10',
-      protein: '30',
-    },
-    {
-      name: 'Beef',
-      calories: '200',
-      carbs: '30',
-      fat: '20',
-      protein: '40',
-    },
-    {
-      name: 'Pork',
-      calories: '300',
-      carbs: '40',
-      fat: '30',
-      protein: '50',
-    },
-  ];
+function FoodSection({ section }:any) {
+
+  const [searchModal, setSearchModal] = useState(false);
+
+  const foodState = useSelector((state:any) => state.foods);
 
   return (
     <div>
       <h2 className="section-title">{section}</h2>
-      {mockFoodData.map((food) => (
-        <div className="food-item" key={food.name}>
-          <div className="food-item-name">{food.name}</div>
-          <div className="food-item-calories">{food.calories}</div>
+      {foodState[section].map((food: any) => (
+        <div className="food-item" key={food.food_name}>
+          <div className="food-item-name">{food.food_name}</div>
+          <div className="food-item-calories">{food.food_description}</div>
         </div>
       ))}
-      <button className="section-add-btn" type="button">
+      <button onClick={()=> {
+        setSearchModal(true);
+      }} className="section-add-btn" type="button">
         Add Food
+        {searchModal && (
+          <ModalSearch
+            searchModal={searchModal}
+            setSearchModal={setSearchModal}
+            section={section}
+          />
+        )}
       </button>
     </div>
   );
